@@ -15,5 +15,9 @@ data/**/*.sav
 data/**/*.raw
 data/**/*.zip
 data/**/*.tar.gz
+data/**/*.doc
+data/**/*.docx
+data/**/*.wps
+data/**/*.pdf
 
 results/*.tmp

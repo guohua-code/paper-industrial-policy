@@ -12,6 +12,7 @@ library(tidyverse)   # dplyr, tidyr, readr, ggplot2, purrr, stringr 等
 library(haven)       # 读取 Stata(.dta)、SPSS(.sav)、SAS 文件
 library(readxl)      # 读取 Excel
 library(data.table)  # 大数据集快速读写与合并
+library(xml2)        # 解析 Word/网页等 XML 结构
 
 # 计量分析
 library(fixest)      # 多期/高维固定效应、聚类稳健标准误
