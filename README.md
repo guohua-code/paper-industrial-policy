@@ -40,10 +40,31 @@ bash analysis/run_all.sh
 
 ## 计算环境
 
-待补充：使用的软件及版本（如 Stata 18 / R 4.4 / Python 3.12），
-以及依赖锁定文件（`requirements.txt`、`renv.lock` 或 Stata 包清单）。
+本项目使用 R 4.6.1，依赖通过 [renv](https://rstudio.github.io/renv/)
+管理，保证包版本可复原。
+
+首次使用：
+
+```r
+install.packages("renv")
+renv::restore()   # 按 renv.lock 安装项目依赖
+```
+
+新增或升级依赖后：
+
+```r
+renv::snapshot()  # 更新 renv.lock 并提交
+```
+
+计划使用的包列在 `analysis/dependencies.R` 中（数据处理、读取 Stata/Sav
+文件、固定效应回归、导出表格等），锁文件为 `renv.lock`。
+
+macOS 上从源码编译 `ragg` 等包需要系统图形库：
+`brew install harfbuzz fribidi pkg-config libtiff webp`。
 
 ## 写作与引用
 
 参考文献统一维护在 `references/refs.bib`。草稿目前用 Markdown，
 后续如转向 LaTeX/Quarto，编译方式在此说明。
+
+推荐使用 RStudio 打开本目录（新建或同名 .Rproj），工作目录即仓库根目录。
