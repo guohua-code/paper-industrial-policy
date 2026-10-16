@@ -1,6 +1,6 @@
 ## 参考文献
 
-文献库统一维护在 `refs.bib`，正文只引用其中的 BibTeX key。
+文献库统一维护在 `refs.bib`，正文只引用其中的 BibTeX key。  
 建议配合 Zotero（Better BibTeX）或直接手工维护，避免多条重复记录。
 
 ## 推荐工作流
@@ -11,9 +11,18 @@
 4. 在 `lit_matrix.csv` 中为精读文献填写一行，`bib_key` 必须与 `refs.bib` 一致。
 5. 综述正文沉淀到 `../manuscripts/literature_review.md`。
 
+如果 Zotero 的自动导出没有及时刷新，可在仓库根目录运行：
+
+```bash
+bash scripts/refresh_refs.sh
+```
+
+该脚本要求 Zotero 正在运行，并通过 Better BibTeX 的本地接口重新导出
+`paper-industrial-policy` 分类。
+
 ## 文献矩阵字段说明
 
-- `relation_to_my_study`：说明该文献与本文的关系，如理论依据、
+- `relation_to_my_study`：说明该文献与本文的关系，如理论依据、  
   假设依据、方法参考、结论对照或边界条件。
 - `usable_section`：预计用于引言、理论与假设、研究方法、讨论等哪个部分。
 - `relevance_rating`：1-5 分，5 分为必须精读和引用。
