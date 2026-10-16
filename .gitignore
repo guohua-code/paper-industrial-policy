@@ -1,0 +1,16 @@
+.DS_Store
+.vscode/
+*.log
+*.tmp
+*.swp
+*.swo
+*~
+data/*.xlsx
+data/*.xls
+data/*.csv
+data/*.dta
+data/*.sav
+data/*.raw
+data/*.zip
+data/*.tar.gz
+results/*.tmp
