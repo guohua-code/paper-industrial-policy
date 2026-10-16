@@ -21,22 +21,42 @@ except ImportError:
 
 
 def extract_rows(pdf_path: str):
-    """从 PDF 的所有表格中提取 (序号, 省份, 企业名称)。"""
+    """从 PDF 所有表格中提取 (序号, 省份, 企业名称)。
+
+    兼容两种省级附件格式：
+      A. 三列：序号 / 省(区、市) / 企业名称（如江苏）
+      B. 两列：省(区、市) / 企业名称，无序号（如浙江）
+    """
     out = []
+    auto_seq = 0
     with pdfplumber.open(pdf_path) as pdf:
         for pageno, page in enumerate(pdf.pages, start=1):
             for table in page.extract_tables():
                 for raw in table:
                     cells = [(c or "").replace("\n", "").replace(" ", "").strip()
                              for c in raw]
-                    if len(cells) < 3:
+                    cells = [c for c in cells if c != ""]
+                    if not cells:
                         continue
-                    seq, prov, name = cells[0], cells[1], cells[2]
-                    if not re.fullmatch(r"\d+", seq):
-                        continue  # 跳过表头/空行
+                    # 跳过表头
+                    joined = "".join(cells)
+                    if "企业名称" in joined or "序号" in joined and len(cells) <= 3:
+                        if "企业名称" in joined:
+                            continue
+                    if len(cells) >= 3 and re.fullmatch(r"\d+", cells[0]):
+                        seq, prov, name = int(cells[0]), cells[1], cells[2]
+                    elif len(cells) >= 2:
+                        # 两列：省份 + 企业名称
+                        prov, name = cells[0], cells[1]
+                        if not prov.endswith(("省", "市", "自治区")) or not name:
+                            continue
+                        auto_seq += 1
+                        seq = auto_seq
+                    else:
+                        continue
                     if not name:
                         continue
-                    out.append((int(seq), prov, name, pageno))
+                    out.append((seq, prov, name, pageno))
     return out
 
 
