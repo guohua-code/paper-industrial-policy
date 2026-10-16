@@ -19,5 +19,6 @@ data/**/*.doc
 data/**/*.docx
 data/**/*.wps
 data/**/*.pdf
+data/**/*.json
 
 results/*.tmp

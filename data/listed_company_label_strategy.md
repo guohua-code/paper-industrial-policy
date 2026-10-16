@@ -88,3 +88,35 @@ https://emweb.securities.eastmoney.com/PC_HSF10/CoreConception/PageAjax?code=SH6
 - `market_board`。
 
 拿到这张表后，才能把官方“小巨人”名单稳定匹配到证券代码和面板年份。
+
+## 当前进展
+
+已通过交易所公开来源生成沪深 A 股上市公司基础表（不含北交所）：
+
+- 深交所 A 股列表 Excel：
+  `https://www.szse.cn/api/report/ShowReport?SHOWTYPE=xlsx&CATALOGID=1110&TABKEY=tab1`
+- 上交所主板与科创板接口：
+  `https://query.sse.com.cn/sseQuery/commonQuery.do`
+- 生成脚本：
+  `analysis/01_clean/01_download_listed_company_list.R`
+- 本地输出：
+  `data/interim/listed_companies_szse_sse.csv`
+
+当前基础表共 5226 行：
+
+| 交易所 | 板块 | 数量 |
+| --- | --- | ---: |
+| 上交所 | 主板 | 1702 |
+| 上交所 | 科创板 | 618 |
+| 深交所 | 主板 | 1495 |
+| 深交所 | 创业板 | 1411 |
+
+北京第六批样本匹配结果：
+
+- 北京市第六批新增名单 271 家，其中直接匹配到沪深 A 股公司 8 家；
+- 北京市第三批复核通过名单 138 家，其中直接匹配到沪深 A 股公司 11 家；
+- 合计匹配 19 家。
+- 匹配输出：`data/interim/little_giant_batch6_beijing_matched_listed.csv`
+
+该结果证明“官方名单 + 交易所上市公司基础表”的直接匹配路线可行。
+后续需要继续补北交所公司表、公司曾用名和统一社会信用代码，并逐省扩展。
