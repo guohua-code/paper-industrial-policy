@@ -5,12 +5,15 @@
 *.swp
 *.swo
 *~
-data/*.xlsx
-data/*.xls
-data/*.csv
-data/*.dta
-data/*.sav
-data/*.raw
-data/*.zip
-data/*.tar.gz
+
+# 原始与中间数据不入库（见 data/README.md 的数据复原说明）
+data/**/*.xlsx
+data/**/*.xls
+data/**/*.csv
+data/**/*.dta
+data/**/*.sav
+data/**/*.raw
+data/**/*.zip
+data/**/*.tar.gz
+
 results/*.tmp
