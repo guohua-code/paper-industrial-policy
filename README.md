@@ -18,7 +18,8 @@
 | `analysis/03_analysis/` | 描述统计、回归、稳健性检验脚本 |
 | `results/figures/`、`results/tables/` | 脚本生成的图形与表格，不手工编辑 |
 | `manuscripts/` | 论文草稿 |
-| `references/` | 参考文献库（BibTeX） |
+| `manuscripts/literature_review.md` | 文献综述正文与综述框架 |
+| `references/` | 参考文献库（BibTeX）与文献矩阵 |
 | `notes/` | 研究笔记与决策日志 |
 
 ## 数据
