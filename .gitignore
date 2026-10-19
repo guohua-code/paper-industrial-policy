@@ -20,5 +20,13 @@ data/**/*.docx
 data/**/*.wps
 data/**/*.pdf
 data/**/*.json
+data/**/*.png
+data/**/*.jpg
+data/**/*.jpeg
+data/**/*.image
+data/**/*.bin
+data/**/*.html
+data/**/*.htm
+data/raw/**/*.md
 
 results/*.tmp
